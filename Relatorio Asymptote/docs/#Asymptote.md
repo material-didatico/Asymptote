@@ -165,27 +165,25 @@ Vamos comparar o processo mais simples para gerar um gráfico da função $y = x
 Como mencionado, a verdadeira potência do Asymptote não está em fazer gráficos simples, mas em ter controle total sobre a aparência final para publicação. O exemplo abaixo demonstra como o mesmo gráfico de parábola pode ser refinado com controle de eixos, grades personalizadas, estilo de linha e rótulos LaTeX precisos.
 
 ```
-// Arquivo: parabola_refinada.asy
 settings.outformat = "png";
-settings.prc = true;
-size(10cm, 0); // largura de 10 cm, altura automática
-
+size(10cm, 0);
 import graph;
-import geometry;
 
 real f(real x) { return x^2; }
-path g = graph(f, -2, 2, operator ..);
+path g = graph(f, -2, 2);
 
-// Estilo do gráfico
 draw(g, blue+1bp);
 
-// Eixos com estilo refinado
+// Eixos principais com ticks visíveis
 xaxis("$x$", -2.5, 2.5, Ticks(Step=0.5, Size=2pt), Arrows(TeXHead), above=true);
 yaxis("$y$", 0, 4.5, Ticks(Step=0.5, Size=2pt), Arrows(TeXHead), above=true);
 
-// Grade leve para visualização
-xaxis(-2.5, 2.5, Ticks(Step=0.5, Size=0), pTick=gray+0.5bp);
-yaxis(0, 4.5, Ticks(Step=0.5, Size=0), pTick=gray+0.5bp);
+// Grades leves desenhadas manualmente
+for (real x = -2.5; x <= 2.5; x += 0.5)
+draw((x,0)--(x,4.5), gray+0.5bp);
+
+for (real y = 0.5; y <= 4.5; y += 0.5)
+draw((-2.5,y)--(2.5,y), gray+0.5bp);
 
 // Legenda
 label("$y = x^2$", (1.5, f(1.5)), align=SE, blue);
