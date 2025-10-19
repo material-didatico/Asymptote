@@ -160,6 +160,40 @@ Vamos comparar o processo mais simples para gerar um gráfico da função $y = x
 
     - **Desvantagem:** Este fluxo é manual e não reprodutível por código. Torna-se complicado para publicações sérias, pois não há garantia de consistência (tamanho da fonte, enquadramento) entre diferentes gráficos.
 
+4. **Exemplo Refinado: O Poder do Asymptote**
+
+Como mencionado, a verdadeira potência do Asymptote não está em fazer gráficos simples, mas em ter controle total sobre a aparência final para publicação. O exemplo abaixo demonstra como o mesmo gráfico de parábola pode ser refinado com controle de eixos, grades personalizadas, estilo de linha e rótulos LaTeX precisos.
+
+```
+// Arquivo: parabola_refinada.asy
+settings.outformat = "png";
+settings.prc = true;
+size(10cm, 0); // largura de 10 cm, altura automática
+
+import graph;
+import geometry;
+
+real f(real x) { return x^2; }
+path g = graph(f, -2, 2, operator ..);
+
+// Estilo do gráfico
+draw(g, blue+1bp);
+
+// Eixos com estilo refinado
+xaxis("$x$", -2.5, 2.5, Ticks(Step=0.5, Size=2pt), Arrows(TeXHead), above=true);
+yaxis("$y$", 0, 4.5, Ticks(Step=0.5, Size=2pt), Arrows(TeXHead), above=true);
+
+// Grade leve para visualização
+xaxis(-2.5, 2.5, Ticks(Step=0.5, Size=0), pTick=gray+0.5bp);
+yaxis(0, 4.5, Ticks(Step=0.5, Size=0), pTick=gray+0.5bp);
+
+// Legenda
+label("$y = x^2$", (1.5, f(1.5)), align=SE, blue);
+```
+
+- Saída: O resultado é um gráfico com qualidade de publicação, onde cada elemento foi programaticamente definido, garantindo precisão e consistência.
+
+![Parabola Refinada](parabola_asy2.png)
 
 ## O Nicho de Excelência: Por que Usar Asymptote?
 
