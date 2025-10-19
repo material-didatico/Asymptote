@@ -1,0 +1,23 @@
+# mkdocs.yml
+
+# 1. Informações Básicas do Site
+# (Obrigatório) Altere "Meu Relatório" para o título do seu projeto
+site_name: Meu Relatório sobre Asymptote
+site_author: Seu Nome
+
+# 2. Configuração do Tema
+# (Opcional, mas recomendado) Vamos usar o tema padrão 'readthedocs'
+theme: readthedocs
+
+# 3. Navegação do Site
+# Isso cria o menu de navegação.
+# Altere 'index.md' para o nome do seu arquivo markdown principal, se for diferente.
+nav:
+  - 'Início': 'index.md'
+  # - 'Outra Página': 'outra-pagina.md'  # Exemplo se você tiver mais páginas
+
+# 4. Extensões do Markdown (A PARTE MAIS IMPORTANTE PARA VOCÊ)
+# Isso ativa a extensão 'attr_list' para que você possa
+# definir o tamanho das suas imagens SVG.
+markdown_extensions:
+  - attr_list
